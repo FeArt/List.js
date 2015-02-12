@@ -1,0 +1,137 @@
+@charset "utf-8";
+body {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  background: #FFF;
+}
+body, select, input, form {
+  margin: 0px;
+  padding: 0px;
+}
+textarea {
+  border: solid 1px #aaa;
+  background: #FFF;
+}
+img {
+  border: 0px;
+}
+a {
+  color: #6c6c96;
+  text-decoration: none;
+}
+a:hover {
+  color: #ff6600;
+  text-decoration: underline;
+}
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+.select {
+  border: solid 1px #aaa;
+  height: 20px;
+  background: url(../image/input_bg.gif) repeat-x;
+}
+.btn1 {
+  width: 60px;
+  height: 22px;
+  padding-top: 2px;
+  cursor: pointer;
+  color: #444;
+  border: 1px solid #7c797e;
+  border-radius: 3px;
+  background: -webkit-linear-gradient(top, #f0e6f6, #dfc9e8);
+  background: -moz-linear-gradient(top, #f0e6f6, #dfc9e8);
+  background: -ms-linear-gradient(top, #f0e6f6, #dfc9e8);
+}
+.btn2 {
+  width: 80px;
+  height: 22px;
+  padding-top: 2px;
+  cursor: pointer;
+  color: #444;
+  border: 1px solid #7c797e;
+  border-radius: 3px;
+  background: -webkit-linear-gradient(top, #f0e6f6, #dfc9e8);
+  background: -moz-linear-gradient(top, #f0e6f6, #dfc9e8);
+  background: -ms-linear-gradient(top, #f0e6f6, #dfc9e8);
+}
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+#list_head td {
+  line-height: 15px;
+}
+.table_td_padding tr td {
+  padding: 0 2px;
+}
+.table_title_tr {
+  background: url(../image/table_bg01.gif) repeat-x bottom;
+  height: 30px;
+  color: #FFF;
+  font-weight: bold;
+}
+.table_title_tr td {
+  text-align: center;
+}
+.table_txt_tr1 {
+  background: #fff;
+  height: 36px;
+  color: #555;
+}
+.table_txt_tr1 td {
+  text-align: center;
+}
+.table_txt_tr2 {
+  background: #f4f1f8;
+  height: 36px;
+  color: #555;
+}
+.table_txt_tr2 td {
+  text-align: center;
+}
+.table_txt_tr1 .table_txt_td, .table_txt_tr2 .table_txt_td {
+  text-align: left;
+}
+.table_main_tr2 {
+  background: url(../image/table_bg01.gif) repeat-x;
+  height: 30px;
+}
+.choose_bar {
+  overflow: hidden;
+  clear: both;
+}
+.keyword {
+  border: solid 1px #aaa;
+  height: 18px;
+  line-height: 18px;
+  background: url(../image/input_bg.gif) repeat-x;
+}
+
+/* 列表表头链接 */
+.trbg11 {
+  background: #ffffe1;
+  height: 36px;
+  color: #555;
+}
+.trbg11 td {
+  text-align: center;
+}
+.trbg11 .table_txt_td {
+  text-align: left;
+}
+#list_head a {
+  color: #FFFFFF;
+}
+.text_white {
+  color: #FFF;
+}
+.to_page:hover {
+  cursor: pointer;
+}

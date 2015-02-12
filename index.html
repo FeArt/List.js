@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>List.js 演示页面</title>
+		<link rel="stylesheet" href="css/list.css">
+	</head>
+	<body>
+		<div class="container">
+			<span class="title">列表演示页面</span>
+			<div id="simple_search" class = "container" style="display: none !important;">
+				<form id="search" name="search" action="data/data.json" method="post">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_td_padding">
+						<tbody><tr style="height:36px;">
+							<td align="right">
+								<span class="choose_bar">
+								<select name="searchType" id="search_searchType" class="select">
+									<option value="-1" selected="selected">--不限--</option>
+									<option value="1">姓名</option>
+									<option value="2">职位</option>
+									<option value="3">薪资</option>
+									<option value="4">入职时间</option>
+									<option value="5">所在地</option>
+									<option value="6">序列号</option>
+								</select>
+								</span>
+								<input type="text" name="keyword" size="10" value="" id="keyword" class="keyword">
+								<input type="hidden" name="pageNumber" value="" id="list_pagenumber">
+								<input type="hidden" name="sortColumn" value="0" id="list_sortcolumn">
+								<input type="hidden" name="pageSize" value="0" id="list_pagesize">
+							</td>
+							<td width="60"><input id="list_button_query" type="button" value="检索" class="btn1"></td>
+							<td width="80"><input id="list_search_more" type="button" value="更多条件" class="btn2"></td>
+						</tr>
+					</tbody></table>
+				</form>
+			</div>
+			<div id="adv_search" style="display:none;">
+				<form id="advSearch" action="advSearch" theme="simple" namespace="">
+				<div class="adv_content">
+					<table class="adv_table" width="100%" border="0" cellspacing="2" cellpadding="0">
+						<tr class="adv_tr">
+							<td class="adv_td1" width="65" align="right">姓名：</td>
+							<td class="adv_td1" width="200"><input type="text" name= "name"></td>
+							<td class="adv_td1" width="100"></td>
+							<td class="adv_td1" width="65" align="right">职位：</td>
+							<td class="adv_td1" width="200"><input type="text" name = "pisition"></td>
+							<td class="adv_td1"></td>
+						</tr>
+						<tr class="adv_tr">
+							<td class="adv_td1" align="right">薪资：</td>
+							<td class="adv_td1">
+								<input type="text" name = "salary">
+							</td>
+							<td class="adv_td1" width="100"></td>
+							<td class="adv_td1" align="right">开始时间：</td>
+							<td class="adv_td1">
+								<input type="text" name = "start_date">
+							</td>
+						</tr>
+					</table>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_td_padding">
+						<tr style="height:36px;">
+							<td align="right"></td>
+							<td width="60"><input id="list_button_advSearch" type="button" value="检索" class="btn1"/></td>
+							<td width="80"><input id="list_search_hide" type="button" value="隐藏条件" class="btn2" /></td>
+						</tr>
+					</table>
+				</div>
+				</form>
+			</div>
+			<textarea id="list_template" style="display:none;">
+			<table id="list_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="table_td_padding">
+				<thead id="list_head">
+					<tr class="table_title_tr">
+						<td width="20"><input id="check" name="check" type="checkbox"  title="点击全选/不选本页所有项目" /></td>
+						<td width="2"><img src="image/table_line.gif" width="2" height="24" /></td>
+						<td width="30">序号</td>
+						<td width="2"><img src="image/table_line.gif" width="2" height="24" /></td>
+						<td> <a id="sortcolumn0" href="" class="{if sortColumn == 0}{if sortColumnLabel == 1}up_css{else}down_css{/if}{/if}" title="点击按项目名称排序">姓名</a></td>
+						<td width="2"><img src="image/table_line.gif" width="2" height="24" /></td>
+						<td width="200"><a id="sortcolumn1" href="" class="{if sortColumn == 1}{if sortColumnLabel == 1}up_css{else}down_css{/if}{/if}" title="点击按申请人排序">职位</a></td>
+						<td width="2"><img src="image/table_line.gif" width="2" height="24" /></td>
+						<td width="64"><a id="sortcolumn2" href="" class="{if sortColumn == 2}{if sortColumnLabel == 1}up_css{else}down_css{/if}{/if}" title="点击按依托高校排序">薪资</a></td>
+						<td width="2"><img src="image/table_line.gif" width="2" height="24" /></td>
+						<td width="54"><a id="sortcolumn3" href="" class="{if sortColumn == 3}{if sortColumnLabel == 1}up_css{else}down_css{/if}{/if}" title="点击按项目类别排序">入职时间</a></td>
+						<td width="2"><img src="image/table_line.gif" width="2" height="24" /></td>
+						<td width="80"><a id="sortcolumn4" href="" class="{if sortColumn == 4}{if sortColumnLabel == 1}up_css{else}down_css{/if}{/if}" title="点击按学科门类排序">办公所在地</a></td>
+						<td width="2"><img src="image/table_line.gif" width="2" height="24" /></td>
+						<td width="54"><a id="sortcolumn5" href="" class="{if sortColumn == 5}{if sortColumnLabel == 1}up_css{else}down_css{/if}{/if}" title="点击按项目年度排序">序列号</a></td>
+					</tr>
+				</thead>
+				<tbody>
+					{for item in root}
+					<tr>
+						<td><input type="checkbox" name="entityIds" value="${item.laData[0]}" /></td>
+						<td></td>
+						<td>${item.num}</td>
+						<td></td>
+						<td class="table_txt_td"><a id="${item.laData[0]}"  class="link1" href="" title="点击查看详细信息"  type="1">${item.laData[0]}</a></td>
+						<td></td>
+						<td>${item.laData[1]}</td>
+						<td></td>
+						<td>${item.laData[2]}</td>
+						<td></td>
+						<td>${item.laData[3]}</td>
+						<td></td>
+						<td>${item.laData[4]}</td>
+						<td></td>
+						<td>${item.laData[5]}</td>
+					</tr>
+					{forelse}
+					<tr>
+						<td align="center">暂无符合条件的记录</td>
+					</tr>
+					{/for}
+				</tbody>
+			</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_td_padding">
+				<tr class="table_main_tr2">
+				</tr>
+			</table>
+			</textarea>
+		</div>
+		<div id="list_container" class = "container" style="display:none;"></div>
+		<script src="js/common.js"></script>
+		<script src="js/sea.js"></script>
+		<script src="js/sea_config.js"></script>
+		<script>
+			seajs.use("main.js",function(main) {
+				main.init();
+			})
+		</script>
+	</body>
+</html>
